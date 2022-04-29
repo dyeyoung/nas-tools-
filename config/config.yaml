@@ -8,19 +8,19 @@ app:
   # 【日志文件的路径】：logtype为file时生效
   logpath: '/config/logs'
   # 【群晖日志中心IP和端口】：logtype为SERVER时生效。端口一般是514，只需要改动IP为群晖的IP
-  logserver: 127.0.0.1:514
+  logserver: 192.168.2.179:514
   # 【WEB管理界面端口】：默认3000
   web_port: 3000
   # 【WEB管理页面登录用户】，默认admin
-  login_user: admin
+  login_user: daiyang002
   # 【WEB管理页面登录密码】：默认password，如果是全数字密码，要用''括起来
-  login_password: password
+  login_password: daiyang5277
   # 【WEB管理界面使用的HTTPS的证书和KEY的路径】，留空则不启用HTTPS
   ssl_cert:
   ssl_key:
   # 【TMDB API KEY】：需要在https://www.themoviedb.org/申请，必须配置，否则无法识别媒体资源和重命名
   # 以下地址需要网络能够正常访问：api.themoviedb.org、images.weserv.nl、webservice.fanart.tv
-  rmt_tmdbkey:
+  rmt_tmdbkey:acc4eead2ed7dd2a3df38c83c6dcbb6b
   # 【TMDB匹配模式】：normal、strict，normal模式下如使用文件名/种子名中的年份无法匹配到媒体信息，会去掉年份再匹配一次；strict模式则严格按文件中年份匹配
   # normal模式下会提升识别成功率，但也可能会导致误识别率增加；strict模式可以降低误识别率，但可能导致很多文件名/种子名中年份不正确的无法被识别（特别是剧集，需要是首播年份）
   rmt_match_mode: normal
@@ -36,17 +36,17 @@ app:
 # 【配置媒体库信息】
 media:
   # 【媒体库管理软件】：emby、jellyfin，需要在emby或jellyfin区配置详细信息，用于下载检查控重、媒体库展示等，建议配置
-  media_server: emby
+  media_server: jellyfin
   # 【媒体库电影文件存放目录】：支持配置多个目录，不同的硬盘需映射为不同的根目录，以更于程序区分
   movie_path:
-    - '/mnt/media/电影'
+    - '/volume1/Baidu/电影'
   # 【媒体库电视剧文件存放目录】：支持配置多个目录，不同的硬盘需映射为不同的根目录，以更于程序区分
   tv_path:
-    - '/mnt/media/电视剧'
+    - '/volume1/Baidu/电视剧'
   # 【媒体库动漫文件单独存放目录】：支持配置多个目录，不同的硬盘需映射为不同的根目录，以更于程序区分
   # 如果设置了该目录，则所有动漫电视剧都会识别为动漫并存放在该目录下，否则动漫电视剧会识别为电视剧并存放在电视剧目录分类下；动漫电影仍然在电影目录分类下
   anime_path:
-    - '/mnt/media/动漫'
+    - '/volume1/Baidu/动漫'
   # 【无法识别时转移存放的目录】：如有多个磁盘，需要对应配置多个目录，否则跨盘无法硬链接
   # 注意：如果你在sync区域配置了未识别目录，由会优先转移到对应未识别目录下，只有PT下载转移及sync未配置未识别目录时才会使用该目录
   unknown_path:
@@ -62,16 +62,16 @@ media:
 # 配置Emby服务器信息
 emby:
   # 【Emby服务器IP地址和端口】：注意区分http和https，http时可以不加http://，https时必须加https://
-  host: http://127.0.0.1:8096
+  host: 
   # 【Emby ApiKey】：在Emby设置->高级->API密钥处生成，注意不要复制到了应用名称
   api_key:
 
 # 配置Jellyfin服务器信息
 jellyfin:
   # 【Jellyfin服务器IP地址和端口】：注意区分http和https，http时可以不加http://，https时必须加https://
-  host: http://127.0.0.1:8096
+  host: http://192.168.2.179:8096
   # 【Jellyfin ApiKey】：在Jellyfin设置->高级->API密钥处生成
-  api_key:
+  api_key:e33b378faa214458b77f88611d401099
 
 # 【配置消息通知服务】
 message:
@@ -102,9 +102,9 @@ message:
   # 【Telegram通知】：填写Telegram bot机器人的信息，需要在Telegram中创建机器人
   telegram:
     # telegram机器人的Token，关注BotFather创建机器人
-    telegram_token:
+    telegram_token:5284037600:AAGFI92EVX-3Fko8SYeK1DwYsoY64NN4GUw
     # telegram中关注getuserID获取
-    telegram_chat_id:
+    telegram_chat_id:5137516090
     # 【webhook开关】：打开该开关会对该机器人设置WebHook，实现在聊天窗口运行服务及进行PT资源检索下载，只有管理员用户可以使用命令
     # 注意：受Telegram限制，程序运行端口需要设置为以下端口之一：443, 80, 88, 8443，且可能需要有公网认证的可信SSL证书
     webhook: true
