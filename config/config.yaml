@@ -8,7 +8,7 @@ app:
   # 【日志文件的路径】：logtype为file时生效
   logpath: '/config/logs'
   # 【群晖日志中心IP和端口】：logtype为SERVER时生效。端口一般是514，只需要改动IP为群晖的IP
-  logserver: 192.168.2.179:514
+  logserver: 192.168.2.179: 514
   # 【WEB管理界面端口】：默认3000
   web_port: 3000
   # 【WEB管理页面登录用户】，默认admin
@@ -124,9 +124,7 @@ sync:
   # 配置格式3：'源目录|目的目录|未识别目录'，比如：'/mnt/pt_movie|mnt/emby_movie|emby_unknown'，源目录中文件不会区分类型，均往目的目录转移，未识别的会转移到未识别目录中
   # 一行的三个目录需要在同一个磁盘分区/共享目录中，有多个目录的，需要映射上级目录，源目录和目的目录为子目录，如果分开映射则可能发生跨盘的问题
   sync_path:
-    - '/mnt/resiliosync/大片抢先看'
-    - '/mnt/pt|/mnt/emby'
-    - '/mnt/pt|/mnt/emby|/mnt/unknown'
+    - '/volume1/Baidu
   # 【监控目录文件的转移方式】：link、copy、softlink，link即硬链接、softlink为软链接，copy为复制，均会重命名
   # link要求源目录和目的目录或媒体库目录在一个磁盘分区或者存储空间，Docker运行时link模式需要直接映射源目录和目的目录或媒体库目录的上级目录，否则docker可能仍然会认为是跨盘
   # softlink模式注意宿主机的源目录映射到docker容器中后要路径要一致，否则可能软链接成功但无法在宿主机使用
@@ -137,7 +135,7 @@ sync:
 # 【配置PT站点和检索信息】
 pt:
   # 【PT下载使用的客户端软件】：qbittorrent、transmission，需要配置qbittorrent或transmission对应的配置区域
-  pt_client: qbittorrent
+  pt_client: transmission
   # 【PT下载软件监控开关】：是否监控PT下载软件：true、false，如为true则PT下载完成会自动转移和重命名，如为false则不会处理
   # PT下载软件监控与Sync下载目录同步不要同时开启，否则功能存在重复
   pt_monitor: false
@@ -171,10 +169,10 @@ pt:
 # 【配置Jackett检索器】
 jackett:
   # 【Jackett ApiKey】：Jackett配置页面右上角复制API Key
-  api_key:
+  api_key:56atwhcd6amtp22usopmr1ewibo5g7le
   # 【Jackett索引器】：Jackett Indexer中添加索引器，选择“Copy Torznab Feed”生成链接填入，可以配置多个，配置上的就会参与检索(注意最后要带/)，配置在前面的优先
   indexers:
-    - https://IP:9117/api/v2.0/indexers/mteamtp/results/torznab/
+    - https://192.168.2.179:9117/api/v2.0/indexers/mteamtp/results/torznab/
 
 # 【配置prowlarr检索器】
 prowlarr:
@@ -189,10 +187,10 @@ qbittorrent:
   qbhost: 127.0.0.1
   qbport: 8080
   # qBittorrent 登录用户名和密码
-  qbusername: admin
-  qbpassword: adminadmin
+  qbusername: 
+  qbpassword: 
   # 转移完成后是否自动强制作种，按需要设置
-  force_upload: true
+  force_upload: false
   ## 下面两项配置问的人比较多，解释一下：
   # 1、save_path是nastool检索到需要新增下载时告诉qb下到哪个目录去，是传给qb的
   # 2、save_containerpath是告诉nastool qb的下载路径对应在nastool里又是映射为什么路径，这样nastool才能通过这个路径访问到qb下载好的文件
