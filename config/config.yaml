@@ -169,7 +169,7 @@ pt:
 # 【配置Jackett检索器】
 jackett:
   # 【Jackett ApiKey】：Jackett配置页面右上角复制API Key
-  api_key:56atwhcd6amtp22usopmr1ewibo5g7le
+  api_key:f6cey8qbmajqmq7mcamc1vcuip6ucfmr
   # 【Jackett索引器】：Jackett Indexer中添加索引器，选择“Copy Torznab Feed”生成链接填入，可以配置多个，配置上的就会参与检索(注意最后要带/)，配置在前面的优先
   indexers:
     - https://192.168.2.179:9117/api/v2.0/indexers/mteamtp/results/torznab/
@@ -216,11 +216,11 @@ qbittorrent:
 # 【配置transmission下载软件】：pt区的pt_client如配置为transmission则需要同步配置该项，需要3.0以上版本，否则可能会报错
 transmission:
   # 【transmission IP地址和端口】：注意如果tr启用了HTTPS证书，则需要配置为https://IP
-  trhost: 127.0.0.1
+  trhost:192.168.2.179
   trport: 9091
   # transmission 登录用户名和密码
-  trusername: admin
-  trpassword: password
+  trusername: daiyang002
+  trpassword: daiyang5277
   ## 下面两项配置问的人比较多，解释一下：
   # 1、save_path是nastool检索到需要新增下载时告诉tr下到哪个目录去，是传给tr的
   # 2、save_containerpath是告诉nastool tr的下载路径对应在nastool里又是映射为什么路径，这样nastool才能通过这个路径访问到tr下载好的文件
@@ -229,17 +229,17 @@ transmission:
   # 1、直接在：号后面配置一个路径（删掉下面的movie、tv、anime项），则所有电影电视剧动漫均下载到这个目录中
   # 2、在save_path下面配置子栏目，可以按电影movie、电视剧tv、动漫anime分开目录存储，anime动漫可以不配置，不配时使用tv目录
   save_path:
-    movie:
-    tv:
-    anime:
+    movie:/volume1/Baidu/电影
+    tv:/volume1/Baidu/电视剧
+    anime:/volume1/Baidu/动漫
   # 1、如果本程序是用Docker运行，则这个是PT下载目录对应映射到本程序Docker容器内的路径
   # 2、如果本程序不是Docker运行但tr是Docker运行，则设置为PT下载目录在宿主机上的真实路径
   # 3、不是以上两种情况，或者在容器中的映射路径与宿主机的路径一致（推荐）则留空即可
   # 配置项需要跟save_path一一对应
   save_containerpath:
-    movie:
-    tv:
-    anime:
+    movie:/volume1/Baidu/电影
+    tv:/volume1/Baidu/电视剧
+    anime:/volume1/Baidu/动漫
 
 # 【配置豆瓣账号信息】：配置后会自动同步豆瓣收藏，豆瓣标记想看内容后，后台自动下载
 douban:
